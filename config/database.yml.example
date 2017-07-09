@@ -17,7 +17,7 @@ production:
   adapter: postgresql
   encoding: utf8
   database: canvas_production
-  host: localhost
-  username: canvas
-  password: your_password
+  host: postgres
+  username: <%= ENV['CCT_CANVAS_DATABASE_USERNAME'] %>
+  password: <%= ENV['CCT_CANVAS_DATABASE_PASSWORD'] %>
   timeout: 5000

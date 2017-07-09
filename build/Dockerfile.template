@@ -97,6 +97,8 @@ RUN bash -c ' \
     public/javascripts/translations \
     tmp-*.tmp'
 
+COPY config/database.yml.example config/database.yml
+
 USER docker
 <% else -%>
 
@@ -107,6 +109,7 @@ COPY gems         ${APP_HOME}gems
 COPY script       ${APP_HOME}script
 COPY package.json ${APP_HOME}
 COPY yarn.lock    ${APP_HOME}
+COPY config/database.yml.example config/database.yml
 RUN find gems -type d ! -user docker -print0 | xargs -0 chown -h docker:docker
 
 # Install deps as docker to avoid sadness w/ npm lifecycle hooks

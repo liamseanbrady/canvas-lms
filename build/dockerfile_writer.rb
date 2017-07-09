@@ -36,7 +36,7 @@ class DockerfileWriter
   end
 
   def generation_message
-    <<~STR
+    <<-STR
       # GENERATED FILE, DO NOT MODIFY!
       # To update this file please edit the relevant template and run the generation
       # task `build/dockerfile_writer.rb`

@@ -1,6 +1,6 @@
-# GENERATED FILE, DO NOT MODIFY!
-# To update this file please edit the relevant template and run the generation
-# task `build/dockerfile_writer.rb`
+      # GENERATED FILE, DO NOT MODIFY!
+      # To update this file please edit the relevant template and run the generation
+      # task `build/dockerfile_writer.rb`
 
 # See doc/docker/README.md or https://github.com/instructure/canvas-lms/tree/master/doc/docker
 FROM instructure/ruby-passenger:2.4
@@ -58,6 +58,7 @@ COPY gems         ${APP_HOME}gems
 COPY script       ${APP_HOME}script
 COPY package.json ${APP_HOME}
 COPY yarn.lock    ${APP_HOME}
+COPY config/database.yml.example config/database.yml
 RUN find gems -type d ! -user docker -print0 | xargs -0 chown -h docker:docker
 
 # Install deps as docker to avoid sadness w/ npm lifecycle hooks
