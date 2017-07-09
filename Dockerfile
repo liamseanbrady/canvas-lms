@@ -43,6 +43,7 @@ RUN if [ -e /var/lib/gems/$RUBY_MAJOR.0/gems/bundler-* ]; then BUNDLER_INSTALL="
   && find $GEM_HOME ! -user docker | xargs chown docker:docker
 
 
+WORKDIR $APP_HOME
 
 # optimizing for size here ... get all the dev dependencies so we can
 # compile assets, then throw away everything we don't need
