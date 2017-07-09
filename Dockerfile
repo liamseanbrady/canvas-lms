@@ -15,6 +15,9 @@ ENV NGINX_MAX_UPLOAD_SIZE 10g
 ENV DISABLE_V8_COMPILE_CACHE 1
 
 USER root
+WORKDIR $APP_HOME
+COPY . $APP_HOME
+COPY ./config/database.yml.example config/database.yml
 WORKDIR /root
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
@@ -38,9 +41,7 @@ RUN if [ -e /var/lib/gems/$RUBY_MAJOR.0/gems/bundler-* ]; then BUNDLER_INSTALL="
   && find $GEM_HOME ! -user docker | xargs chown docker:docker
 
 
-WORKDIR $APP_HOME
 
-COPY . $APP_HOME
 
 # optimizing for size here ... get all the dev dependencies so we can
 # compile assets, then throw away everything we don't need
@@ -84,6 +85,5 @@ RUN bash -c ' \
     public/javascripts/translations \
     tmp-*.tmp'
 
-COPY config/database.yml.example config/database.yml
 
 USER docker
