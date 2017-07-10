@@ -21,6 +21,9 @@ WORKDIR $APP_HOME
 COPY . $APP_HOME
 COPY config/database_config config/database.yml
 COPY config/security_config config/security.yml
+COPY config/delayed_jobs_config config/delayed_jobs.yml
+COPY config/redis_config config/redis.yml
+COPY config/cache_config config/cache_store.yml
 WORKDIR /root
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
