@@ -20,6 +20,7 @@ WORKDIR $APP_HOME
 
 COPY . $APP_HOME
 COPY config/database_config config/database.yml
+COPY config/security_config config/security.yml
 WORKDIR /root
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
