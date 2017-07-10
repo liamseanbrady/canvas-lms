@@ -91,5 +91,6 @@ RUN bash -c ' \
     public/javascripts/translations \
     tmp-*.tmp'
 
+RUN sudo chown -R docker app/stylesheets
 
 USER docker
